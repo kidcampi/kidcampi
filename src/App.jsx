@@ -3,6 +3,41 @@ import React, { useState } from 'react'
 export default function App() {
   const [selectedTalla, setSelectedTalla] = useState('S')
   const [selectedColor, setSelectedColor] = useState('Negro')
+  const [cantidad, setCantidad] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleCheckout = async () => {
+    if (isLoading) return
+
+    try {
+      setIsLoading(true)
+
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          talla: selectedTalla,
+          color: selectedColor,
+          cantidad,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok || !data?.url) {
+        throw new Error(data?.error || 'No se pudo iniciar el pago')
+      }
+
+      window.location.href = data.url
+    } catch (error) {
+      console.error('Checkout error:', error)
+      alert('No se pudo abrir Stripe Checkout. Revisa la configuración e inténtalo de nuevo.')
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div
       style={{
@@ -199,7 +234,11 @@ export default function App() {
             <input
               type="number"
               min="1"
-              defaultValue="1"
+              value={cantidad}
+              onChange={(e) => {
+                const value = Number(e.target.value)
+                setCantidad(Number.isInteger(value) && value > 0 ? value : 1)
+              }}
               style={{
                 width: '90px',
                 padding: '14px',
@@ -212,6 +251,9 @@ export default function App() {
           </div>
 
           <button
+            type="button"
+            onClick={handleCheckout}
+            disabled={isLoading}
             style={{
               padding: '17px 34px',
               borderRadius: '18px',
@@ -220,11 +262,12 @@ export default function App() {
               color: '#ffffff',
               fontSize: '16px',
               fontWeight: '600',
-              cursor: 'pointer',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
               boxShadow: '0 12px 30px rgba(0,0,0,0.15)',
+              opacity: isLoading ? 0.7 : 1,
             }}
           >
-            Comprar ahora
+            {isLoading ? 'Redirigiendo...' : 'Comprar ahora'}
           </button>
 
           <p
