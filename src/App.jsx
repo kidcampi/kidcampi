@@ -132,7 +132,7 @@ export default function App() {
               marginBottom: '30px',
             }}
           >
-            29,95 €
+            1,00 €
           </div>
 
           <div style={{ marginBottom: '24px' }}>
@@ -302,17 +302,6 @@ export default function App() {
           >
             {isLoading ? 'Redirigiendo...' : 'Comprar ahora'}
           </button>
-
-          <p
-            style={{
-              marginTop: '22px',
-              fontSize: '14px',
-              color: '#888',
-              lineHeight: '1.6',
-            }}
-          >
-            Portal simple de un solo producto.
-          </p>
         </div>
       </div>
     </div>
