@@ -111,7 +111,7 @@ export default function App() {
               marginBottom: '14px',
             }}
           >
-            Edición limitada
+            Edició limitada
           </p>
 
           <h1
