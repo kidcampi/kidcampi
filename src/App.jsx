@@ -122,7 +122,7 @@ export default function App() {
               fontWeight: '700',
             }}
           >
-            Camiseta del Kid
+            Samarreta del Kid
           </h1>
 
           <div
