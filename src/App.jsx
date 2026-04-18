@@ -261,7 +261,7 @@ export default function App() {
                 fontSize: '15px',
               }}
             >
-              Cantidad
+              Quantitat
             </div>
 
             <input
@@ -300,7 +300,7 @@ export default function App() {
               opacity: isLoading ? 0.7 : 1,
             }}
           >
-            {isLoading ? 'Redirigiendo...' : 'Comprar ahora'}
+            {isLoading ? 'Redirigint...' : 'Comprar ara'}
           </button>
         </div>
       </div>
