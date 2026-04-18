@@ -36,7 +36,7 @@ export default async function handler(req, res) {
               name: 'Camiseta Essential',
               description: `Color: ${colorFinal} · Talla: ${tallaFinal}`,
             },
-            unit_amount: 2995,
+            unit_amount: 100,
           },
           quantity: cantidadFinal,
         },
