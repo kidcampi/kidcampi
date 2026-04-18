@@ -1,10 +1,24 @@
 import React, { useState } from 'react'
+import frontBlackImage from './assets/frontblack.png'
+import backBlackImage from './assets/backblack.png'
+import frontWhiteImage from './assets/frontwhite.png'
+import backWhiteImage from './assets/backwhite.png'
 
 export default function App() {
   const [selectedTalla, setSelectedTalla] = useState('S')
   const [selectedColor, setSelectedColor] = useState('Negro')
+  const [selectedView, setSelectedView] = useState('Front')
   const [cantidad, setCantidad] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
+
+  const currentImage =
+    selectedColor === 'Negro'
+      ? selectedView === 'Front'
+        ? frontBlackImage
+        : backBlackImage
+      : selectedView === 'Front'
+        ? frontWhiteImage
+        : backWhiteImage
 
   const handleCheckout = async () => {
     if (isLoading) return
@@ -70,7 +84,7 @@ export default function App() {
           }}
         >
           <img
-            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80"
+            src={currentImage}
             alt="Camiseta"
             style={{
               width: '100%',
@@ -217,6 +231,37 @@ export default function App() {
                   }}
                 />
               </button>
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '24px' }}>
+            <div
+              style={{
+                marginBottom: '12px',
+                fontWeight: '600',
+                fontSize: '15px',
+              }}
+            >
+              Vista
+            </div>
+
+            <div
+              style={{
+                display: 'flex',
+                gap: '10px',
+                flexWrap: 'wrap',
+              }}
+            >
+              {['Front', 'Back'].map((view) => (
+                <button
+                  key={view}
+                  type="button"
+                  onClick={() => setSelectedView(view)}
+                  style={selectedView === view ? selectedSize : sizeButton}
+                >
+                  {view}
+                </button>
+              ))}
             </div>
           </div>
 
