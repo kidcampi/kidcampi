@@ -122,20 +122,8 @@ export default function App() {
               fontWeight: '700',
             }}
           >
-            Camiseta Essential
+            Camiseta del Kid
           </h1>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: '1.7',
-              color: '#555',
-              marginBottom: '26px',
-            }}
-          >
-            Una sola camiseta. Sin menús, sin distracciones. Un portal directo,
-            limpio y enfocado únicamente en vender este producto.
-          </p>
 
           <div
             style={{
