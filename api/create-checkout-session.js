@@ -33,7 +33,7 @@ export default async function handler(req, res) {
           price_data: {
             currency: 'eur',
             product_data: {
-              name: 'Camiseta Essential',
+              name: 'Samarreta del Kid',
               description: `Color: ${colorFinal} · Talla: ${tallaFinal}`,
             },
             unit_amount: 1399,
