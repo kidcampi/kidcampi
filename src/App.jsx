@@ -132,7 +132,7 @@ export default function App() {
               marginBottom: '30px',
             }}
           >
-            1,00 €
+            13,99 €
           </div>
 
           <div style={{ marginBottom: '24px' }}>
